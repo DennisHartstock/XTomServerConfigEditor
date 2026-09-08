@@ -15,5 +15,6 @@ Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. 
 - Startup-Einträge können mit Auf-/Ab-Aktionen direkt in ihrer Reihenfolge verschoben werden.
 - Rohdaten können über einen Advanced-Dialog bearbeitet und wieder übernommen werden.
 - Zahlenfelder und Pflichtfelder werden bei der Prüfung gegen die im Schema definierten Grenzen geprüft.
+- Geräteverweise in Startup und Achsen werden gegen bekannte DeviceId-, ControllerId- und AxisNode-Werte geprüft.
 - Wird die Anwendung direkt als `file://` geöffnet, stehen die bekannten Enum-Auswahlen über einen eingebauten Fallback weiterhin zur Verfügung.
 - Öffnen und Speichern erfolgen über lokale JSON-Dateien; Speichern lädt eine formatierte JSON-Datei herunter.
