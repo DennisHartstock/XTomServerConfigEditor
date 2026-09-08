@@ -7,7 +7,7 @@ Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. 
 ### Bearbeitungsregeln
 
 - Text-, Zahlen- und Boolean-Felder werden direkt bei der Eingabe in das interne Modell übernommen.
-- Schema-Werte mit `enum` werden als Dropdown dargestellt: RotationDegrees, Encoder, RemoteAccess, SecurityMode, AuthenticationMode, DataType und Access. Kamera-Streams werden im Host-Bereich ebenfalls strukturiert bearbeitet.
+- Schema-Werte mit `enum` werden dynamisch aus `DevicesConfig/json-devices-schema.json` gelesen und als Dropdown dargestellt. Kamera-Streams werden im Host-Bereich ebenfalls strukturiert bearbeitet.
 - Änderungen markieren die Datei als „ungespeichert“.
 - Geräte- und Assembly-Einträge können entfernt werden.
 - Rohdaten können über einen Advanced-Dialog bearbeitet und wieder übernommen werden.
