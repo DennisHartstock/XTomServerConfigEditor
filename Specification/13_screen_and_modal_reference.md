@@ -8,6 +8,8 @@ Enum-Felder aus `json-devices-schema.json` erscheinen in den strukturierten Bere
 
 Wenn die Schema-Datei im lokalen `file://`-Modus nicht geladen werden kann, verwendet die Oberfläche die bekannten Enum-Definitionen als Fallback und meldet keinen technischen Schema-Ladefehler.
 
+Listenbereiche besitzen eine Hinzufügen-Aktion. Neue Einträge werden direkt in der jeweiligen Liste angelegt und anschließend im gleichen Formular bearbeitet.
+
 ## Rohdaten-Dialog
 
 Der Dialog „Rohdaten bearbeiten“ zeigt die vollständige JSON-Struktur. „Übernehmen“ akzeptiert ausschließlich syntaktisch gültiges JSON; bei Fehlern bleibt der Dialog geöffnet und zeigt eine Fehlermeldung.

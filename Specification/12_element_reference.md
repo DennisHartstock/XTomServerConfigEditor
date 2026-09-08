@@ -10,6 +10,7 @@ Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. 
 - Schema-Werte mit `enum` werden dynamisch aus `DevicesConfig/json-devices-schema.json` gelesen und als Dropdown dargestellt. Kamera-Streams werden im Host-Bereich ebenfalls strukturiert bearbeitet.
 - Änderungen markieren die Datei als „ungespeichert“.
 - Geräte- und Assembly-Einträge können entfernt werden.
+- Neue Kamera-, Detektor-, Quellen-, Systemgeräte-, Assembly- und Startup-Einträge können mit schema-kompatiblen Standardwerten angelegt werden.
 - Rohdaten können über einen Advanced-Dialog bearbeitet und wieder übernommen werden.
 - Zahlenfelder und Pflichtfelder werden bei der Prüfung gegen die im Schema definierten Grenzen geprüft.
 - Wird die Anwendung direkt als `file://` geöffnet, stehen die bekannten Enum-Auswahlen über einen eingebauten Fallback weiterhin zur Verfügung.
