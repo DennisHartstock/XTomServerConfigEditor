@@ -12,6 +12,7 @@ Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. 
 - Geräte- und Assembly-Einträge können entfernt werden.
 - Neue Kamera-, Detektor-, Quellen-, Systemgeräte-, Assembly- und Startup-Einträge können mit schema-kompatiblen Standardwerten angelegt werden.
 - Relevante optionale Felder werden auch dann angezeigt, wenn sie im geladenen JSON noch fehlen, und können direkt ergänzt werden.
+- Startup-Einträge können mit Auf-/Ab-Aktionen direkt in ihrer Reihenfolge verschoben werden.
 - Rohdaten können über einen Advanced-Dialog bearbeitet und wieder übernommen werden.
 - Zahlenfelder und Pflichtfelder werden bei der Prüfung gegen die im Schema definierten Grenzen geprüft.
 - Wird die Anwendung direkt als `file://` geöffnet, stehen die bekannten Enum-Auswahlen über einen eingebauten Fallback weiterhin zur Verfügung.

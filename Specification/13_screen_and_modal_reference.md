@@ -12,6 +12,8 @@ Listenbereiche besitzen eine Hinzufügen-Aktion. Neue Einträge werden direkt in
 
 Die strukturierten Karten zeigen ihre unterstützten Felder vollständig. Fehlende optionale Werte werden als leere Eingaben beziehungsweise als nicht gesetzte Auswahl dargestellt.
 
+Die Startup-Karten bieten Auf- und Ab-Aktionen. Die erste beziehungsweise letzte Karte deaktiviert die jeweils nicht mögliche Richtung.
+
 ## Rohdaten-Dialog
 
 Der Dialog „Rohdaten bearbeiten“ zeigt die vollständige JSON-Struktur. „Übernehmen“ akzeptiert ausschließlich syntaktisch gültiges JSON; bei Fehlern bleibt der Dialog geöffnet und zeigt eine Fehlermeldung.
