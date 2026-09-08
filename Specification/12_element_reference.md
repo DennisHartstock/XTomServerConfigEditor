@@ -11,8 +11,11 @@ Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. 
 - Änderungen markieren die Datei als „ungespeichert“.
 - Geräte- und Assembly-Einträge können entfernt werden.
 - Neue Kamera-, Detektor-, Quellen-, Systemgeräte-, Assembly- und Startup-Einträge können mit schema-kompatiblen Standardwerten angelegt werden.
+- Im Bereich „Achsen & Kollision“ können neue Achsen mit Standardtyp und editierbaren Controller-/AxisNode-Referenzen angelegt oder entfernt werden.
 - Relevante optionale Felder werden auch dann angezeigt, wenn sie im geladenen JSON noch fehlen, und können direkt ergänzt werden.
 - Startup-Einträge können mit Auf-/Ab-Aktionen direkt in ihrer Reihenfolge verschoben werden.
+- Änderungen können über Rückgängig/Wiederholen beziehungsweise `Ctrl+Z`/`Ctrl+Y` korrigiert werden.
+- Das Öffnen einer anderen Datei, das Laden des Beispiels oder das Anlegen einer neuen Konfiguration fragt bei ungespeicherten Änderungen nach Bestätigung.
 - Rohdaten können über einen Advanced-Dialog bearbeitet und wieder übernommen werden.
 - Zahlenfelder und Pflichtfelder werden bei der Prüfung gegen die im Schema definierten Grenzen geprüft.
 - Geräteverweise in Startup und Achsen werden gegen bekannte DeviceId-, ControllerId- und AxisNode-Werte geprüft.
