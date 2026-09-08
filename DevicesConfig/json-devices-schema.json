@@ -1,0 +1,286 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "JSON Schema for XTomServer device config files",
+
+  "type": "object",
+  "required": ["SystemId", "HostConfigurations", "Assemblies"],
+
+  "properties": {
+    "SystemId": {
+      "type": "string",
+      "description": "A unique identifier for the CT system."
+    },
+    "HostConfigurations": {
+      "type": "object",
+      "description": "Host services that belong to this machine setup.",
+      "required": ["ImageStorage", "SessionControl", "CameraStreams", "DetectorStreams", "XFlowProvider"],
+      "properties": {
+        "ImageStorage": {
+          "type": "object",
+          "required": ["LocalFallbackPath", "DirectBufferCapacityFrames", "LocalSpoolBufferCapacityFrames"],
+          "properties": {
+            "LocalFallbackPath": { "type": "string", "minLength": 1 },
+            "DirectBufferCapacityFrames": { "type": "integer", "minimum": 1, "maximum": 10000 },
+            "LocalSpoolBufferCapacityFrames": { "type": "integer", "minimum": 1, "maximum": 10000 }
+          }
+        },
+        "SessionControl": {
+          "type": "object",
+          "required": ["SessionTimeoutSeconds", "CleanupIntervalSeconds"],
+          "properties": {
+            "SessionTimeoutSeconds": { "type": "integer", "minimum": 5 },
+            "CleanupIntervalSeconds": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "CameraStreams": {
+          "type": "object",
+          "required": ["Cameras"],
+          "properties": {
+            "Cameras": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["ServiceId", "Enabled", "DeviceIndex", "Width", "Height", "FramesPerSecond", "JpegQuality"],
+                "properties": {
+                  "ServiceId": { "type": "string", "minLength": 1 },
+                  "DisplayName": { "type": "string" },
+                  "Enabled": { "type": "boolean" },
+                  "DeviceIndex": { "type": "integer", "minimum": 0 },
+                  "Backend": { "type": "string" },
+                  "Width": { "type": "integer", "minimum": 0, "maximum": 16384 },
+                  "Height": { "type": "integer", "minimum": 0, "maximum": 16384 },
+                  "FramesPerSecond": { "type": "integer", "minimum": 1, "maximum": 60 },
+                  "JpegQuality": { "type": "integer", "minimum": 1, "maximum": 100 },
+                  "RotationDegrees": { "type": "integer", "enum": [-90, 0, 90], "description": "Clockwise output rotation in degrees." },
+                  "FlipHorizontal": { "type": "boolean", "description": "Mirror horizontally after rotation." },
+                  "FlipVertical": { "type": "boolean", "description": "Mirror vertically after rotation." },
+                  "ReconnectDelaySeconds": { "type": "integer", "minimum": 1, "maximum": 300 }
+                }
+              }
+            }
+          }
+        },
+        "DetectorStreams": {
+          "type": "object",
+          "required": ["Raw", "Preview", "Lossless"],
+          "properties": {
+            "Raw": {
+              "type": "object",
+              "required": ["MemoryBufferCapacityFrames", "SpoolWriteQueueCapacityFrames"],
+              "properties": {
+                "MemoryBufferCapacityFrames": { "type": "integer", "minimum": 1, "maximum": 10000 },
+                "SpoolWriteQueueCapacityFrames": { "type": "integer", "minimum": 1, "maximum": 10000 }
+              }
+            },
+            "Preview": {
+              "type": "object",
+              "required": ["Enabled", "Encoder", "Quality", "MaxFramesPerSecond"],
+              "properties": {
+                "Enabled": { "type": "boolean" },
+                "Encoder": { "type": "string", "enum": ["Jpeg", "NvencH264"] },
+                "Quality": { "type": "integer", "minimum": 1, "maximum": 100 },
+                "MaxFramesPerSecond": { "type": "integer", "minimum": 1, "maximum": 60 },
+                "Nvenc": {
+                  "type": "object",
+                  "properties": {
+                    "DirectCudaInput": { "type": "boolean" },
+                    "TargetBitRateMbps": { "type": "integer", "minimum": 1, "maximum": 200 },
+                    "MaximumBitRateMbps": { "type": "integer", "minimum": 1, "maximum": 300 },
+                    "GopLengthFrames": { "type": "integer", "minimum": 1, "maximum": 600 }
+                  }
+                }
+              }
+            },
+            "Lossless": {
+              "type": "object",
+              "required": ["Enabled", "Compression", "CompressionLevel", "IncludeChecksum"],
+              "properties": {
+                "Enabled": { "type": "boolean" },
+                "Compression": { "type": "string" },
+                "CompressionLevel": { "type": "integer", "minimum": 0, "maximum": 22 },
+                "IncludeChecksum": { "type": "boolean" }
+              }
+            }
+          }
+        },
+        "XFlowProvider": {
+          "type": "object",
+          "required": ["Enabled", "Address", "DelegatedControlAddress", "DisplayName", "MaxConcurrency"],
+          "properties": {
+            "Enabled": { "type": "boolean" },
+            "AllowExecutionWithoutControlLease": { "type": "boolean" },
+            "Address": { "type": "string", "minLength": 1 },
+            "DelegatedControlAddress": { "type": "string", "minLength": 1 },
+            "InstanceId": { "type": "string" },
+            "IdentityFilePath": { "type": "string" },
+            "DisplayName": { "type": "string", "minLength": 1 },
+            "MachineId": { "type": "string" },
+            "MaxConcurrency": { "type": "integer", "minimum": 1 }
+          }
+        }
+      }
+    },
+    "Assemblies": {
+      "type": "array",
+      "description": "An array of assemblies.",
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required":["Assembly", "Type", "Alias"],
+        "properties": {
+          "Assembly":{
+            "type": "string",
+            "description": "Relative path to device dll."
+          },
+          "Type":{
+            "type": "string",
+            "description": "Relative path to device dll."
+          },
+          "Alias":{
+            "type": "string",
+            "description": "Alias name of the dll."
+          }
+        }
+      }
+    },
+    "SystemDevices": {
+      "type": "array",
+      "description": "Machine-wide virtual devices exposed through the same command and monitor model as hardware devices.",
+      "items": {
+        "type": "object",
+        "required": ["$type", "DeviceId"],
+        "properties": {
+          "$type": { "type": "string" },
+          "DeviceId": { "type": "string", "minLength": 1 },
+          "RemoteAccess": {
+            "type": "string",
+            "enum": ["None", "ReadOnly", "Full"],
+            "description": "Controls whether the device is hidden, monitor-only, or fully accessible through gRPC."
+          },
+          "SourceTranslationAxisId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Physical Tube-Z/source translation axis used with inverted direction by a VirtualFodAxis."
+          },
+          "DetectorTranslationAxisId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Physical detector-Z axis moved together with Tube-Z by a VirtualFodAxis."
+          },
+          "MinimumPosition": { "type": "number" },
+          "MaximumPosition": { "type": "number" },
+          "ConnectionId": {
+            "type": "string",
+            "description": "Reference to a shared internal OPC UA connection device."
+          },
+          "EndpointUrl": {
+            "type": "string",
+            "pattern": "^opc\\.tcp://",
+            "description": "OPC UA TCP endpoint used by a connection device."
+          },
+          "ApplicationName": { "type": "string", "minLength": 1 },
+          "SecurityMode": {
+            "type": "string",
+            "enum": ["None", "Sign", "SignAndEncrypt"]
+          },
+          "SecurityPolicyUri": { "type": "string", "minLength": 1 },
+          "AuthenticationMode": {
+            "type": "string",
+            "enum": ["Anonymous", "UserName"]
+          },
+          "UserName": { "type": "string" },
+          "Password": {
+            "type": "string",
+            "description": "Development-only clear-text OPC UA password. Replace with a secret reference before production use."
+          },
+          "AutoAcceptUntrustedCertificates": { "type": "boolean" },
+          "NamespaceUri": { "type": "string" },
+          "NamespaceIndex": { "type": "integer", "minimum": 0, "maximum": 65535 },
+          "OperationTimeoutMs": { "type": "integer", "minimum": 1 },
+          "SessionTimeoutMs": { "type": "integer", "minimum": 1 },
+          "ReconnectPeriodMs": { "type": "integer", "minimum": 1 },
+          "Parameters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["Name", "NodeAddress"],
+              "properties": {
+                "Name": { "type": "string", "minLength": 1 },
+                "NodeAddress": { "type": "string", "minLength": 1 },
+                "DataType": {
+                  "type": "string",
+                  "enum": ["Boolean", "Byte", "SByte", "Int16", "UInt16", "Int32", "Int64", "UInt32", "UInt64", "Float", "Double", "String"]
+                },
+                "Access": { "type": "string", "enum": ["ReadOnly", "ReadWrite"] },
+                "MonitorName": { "type": "string" },
+                "CommandName": { "type": "string" },
+                "SamplingIntervalMs": { "type": "integer", "minimum": 20 },
+                "Scale": { "type": "number" },
+                "Offset": { "type": "number" },
+                "MinValue": { "type": "number" },
+                "MaxValue": { "type": "number" },
+                "VerifyReadback": { "type": "boolean" },
+                "ReadbackNodeAddress": { "type": "string" },
+                "VerificationTolerance": { "type": "number", "minimum": 0 },
+                "Required": { "type": "boolean" }
+              }
+            }
+          },
+          "Commands": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["Name", "NodeAddress", "Value"],
+              "properties": {
+                "Name": { "type": "string", "minLength": 1 },
+                "NodeAddress": { "type": "string", "minLength": 1 },
+                "DataType": {
+                  "type": "string",
+                  "enum": ["Boolean", "Byte", "SByte", "Int16", "UInt16", "Int32", "Int64", "UInt32", "UInt64", "Float", "Double", "String"]
+                },
+                "Value": {},
+                "AcknowledgeNodeAddress": { "type": "string" },
+                "AcknowledgeValue": {},
+                "AcknowledgeTimeoutMs": { "type": "integer", "minimum": 1 },
+                "AcknowledgePollIntervalMs": { "type": "integer", "minimum": 1 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "AxesConfiguration":{
+      "type": "object",
+      "description": "An array of assemblies.",      
+      "properties": {
+          "AxisNodes":{
+            "type": "array",
+            "description": "Relative path to device dll.",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required":["NodeId"],
+              "properties": {
+                "NodeId":{
+                  "type": "string"
+                },
+                "CollisionActors":{
+
+                }
+              }
+            }
+          },
+          "Type":{
+            "type": "string",
+            "description": "Relative path to device dll."
+          },
+          "Alias":{
+            "type": "string",
+            "description": "Alias name of the dll."
+          }
+        }        
+      }
+    
+    }
+}

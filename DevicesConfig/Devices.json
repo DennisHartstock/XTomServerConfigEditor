@@ -1,0 +1,336 @@
+{
+  "$schema": "./json-devices-schema.json",
+  "SystemId": "System1",
+  "HostConfigurations": {
+    "ImageStorage": {
+      "LocalFallbackPath": "ScanBackup",
+      "DirectBufferCapacityFrames": 50,
+      "LocalSpoolBufferCapacityFrames": 50
+    },
+    "SessionControl": {
+      "SessionTimeoutSeconds": 30,
+      "CleanupIntervalSeconds": 1
+    },
+    "CameraStreams": {
+      "Cameras": [
+        {
+          "ServiceId": "camera.front.ImageStream",
+          "DisplayName": "Front camera",
+          "Enabled": true,
+          "DeviceIndex": 0,
+          "Backend": "DirectShow",
+          "Width": 640,
+          "Height": 480,
+          "FramesPerSecond": 10,
+          "JpegQuality": 80,
+          "RotationDegrees": 0,
+          "FlipHorizontal": false,
+          "FlipVertical": false
+        },
+        {
+          "ServiceId": "camera.rear.ImageStream",
+          "DisplayName": "Rear camera",
+          "Enabled": false,
+          "DeviceIndex": 1,
+          "Backend": "DirectShow",
+          "Width": 640,
+          "Height": 480,
+          "FramesPerSecond": 10,
+          "JpegQuality": 80,
+          "RotationDegrees": 0,
+          "FlipHorizontal": false,
+          "FlipVertical": false
+        }
+      ]
+    },
+    "DetectorStreams": {
+      "Raw": {
+        "MemoryBufferCapacityFrames": 50,
+        "SpoolWriteQueueCapacityFrames": 50
+      },
+      "Preview": {
+        "Enabled": true,
+        "Encoder": "NvencH264",
+        "Quality": 80,
+        "MaxFramesPerSecond": 30,
+        "Nvenc": {
+          "DirectCudaInput": true,
+          "TargetBitRateMbps": 20,
+          "MaximumBitRateMbps": 30,
+          "GopLengthFrames": 30
+        }
+      },
+      "Lossless": {
+        "Enabled": false,
+        "Compression": "Zstd",
+        "CompressionLevel": 3,
+        "IncludeChecksum": true
+      }
+    },
+    "XFlowProvider": {
+      "Enabled": true,
+      "AllowExecutionWithoutControlLease": false,
+      "Address": "http://127.0.0.1:5001",
+      "DelegatedControlAddress": "127.0.0.1:5070",
+      "InstanceId": "",
+      "IdentityFilePath": "",
+      "DisplayName": "XTom Server",
+      "MaxConcurrency": 1
+    }
+  },
+  "Assemblies": [
+    {
+      "Assembly": "DLLs\\TestDetector.dll",
+      "Type": "TestDetector.TestDetectorCreator",
+      "Alias": "DetectorTest"
+    },
+    {
+      "Assembly": "DLLs\\DetectorSpectrumLogic.dll",
+      "Type": "DetectorSpectrumLogic.DetectorSpectrumLogicCreator",
+      "Alias": "DetectorSL"
+    },
+    {
+      "Assembly": "DetectorIRay.dll",
+      "Type": "DetectorIRay.DetectorIRayCreator",
+      "Alias": "DetectorIRay"
+    },
+    {
+      "Assembly": "DLLs\\TestSource.dll",
+      "Type": "TestSource.TestSourceCreator",
+      "Alias": "TestSource"
+    },
+    {
+      "Assembly": "DLLs\\DetectorDexela.dll",
+      "Type": "DetectorDexela.DetectorDexelaCreator",
+      "Alias": "DetectorDexela"
+    },
+    {
+      "Assembly": "DLLs\\SourceHamamatsu.dll",
+      "Type": "SourceHamamatsu.HamamatsuSourceCreator",
+      "Alias": "HamamatsuL9181"
+    },
+    {
+      "Assembly": "DLLs\\SourceXRAYWorX.dll",
+      "Type": "SourceXRAYWorX.BridgedXRAYWorXSourceCreator",
+      "Alias": "SourceXRAYWorX"
+    },
+    {
+      "Assembly": "DLLs\\TestStage.dll",
+      "Type": "TestStage.TestStageCreator",
+      "Alias": "TestStage"
+    },
+    {
+      "Assembly": "DLLs\\StageBR.dll",
+      "Type": "StageBR.BrStageCreator",
+      "Alias": "StageBR"
+    }
+  ],
+  "AxesConfiguration": {
+    "AxisNodes": [
+      {
+        "NodeId": "MainNode",
+        "CollisionActors": [
+          {
+            "$type": "CollisionBox",
+            "ActorId": "CollisionBoxMain",
+            "MinX": -0.1,
+            "MaxX": 0.1,
+            "MinY": -200.0,
+            "MaxY": 0.0,
+            "MinZ": -150.0,
+            "MaxZ": 100.0,
+            "IsStatic": false
+          },
+          {
+            "$type": "SampleCollisionBox",
+            "ActorId": "CollisionBoxSample",
+            "Radius": 50.0,
+            "Height": 100.0,
+            "IsStatic": false
+          },
+          {
+            "$type": "CollisionBox",
+            "ActorId": "CollisionBoxSource",
+            "MinX": -100.0,
+            "MaxX": 100.0,
+            "MinY": -100.0,
+            "MaxY": 300.0,
+            "MinZ": -100.0,
+            "MaxZ": 0.0,
+            "IsStatic": true
+          }
+        ]
+      },
+      {
+        "NodeId": "DetectorNode",
+        "CollisionActors": [
+          {
+            "$type": "CollisionBox",
+            "ActorId": "CollisionBoxDetector",
+            "MinX": -200.0,
+            "MaxX": 200.0,
+            "MinY": -200.0,
+            "MaxY": 200.0,
+            "MinZ": -150.0,
+            "MaxZ": 10.0,
+            "IsStatic": false
+          }
+        ]
+      },
+      {
+        "NodeId": "SampleRotationNode",
+        "DependedNodeId": "MainNode",
+        "CollisionActors": [
+          {
+            "$type": "SampleCollisionBox",
+            "ActorId": "CollisionBoxSample",
+            "Radius": 50.0,
+            "Height": 100.0,
+            "IsStatic": false,
+            "ObserveShapeChanges": false
+          }
+        ]
+      }
+    ],
+    "StageControllers": [
+      {
+        "$type": "TestStage",
+        "DeviceId": "StageController"
+      }
+    ],
+    "Axes": [
+      {
+        "$type": "AxisStandard",
+        "DeviceId": "Spec_TransZ",
+        "ControllerId": "StageController",
+        "AxisNodeId": "MainNode",
+        "Movement": "TransZ",
+        "MoveAfterInit": 300,
+        "LimMin": 0,
+        "LimMax": 900
+      },
+      {
+        "$type": "AxisStandard",
+        "DeviceId": "Spec_TransY",
+        "ControllerId": "StageController",
+        "AxisNodeId": "MainNode",
+        "Movement": "TransY",
+        "MoveAfterInit": 10,
+        "LimMin": 0,
+        "LimMax": 200
+      },
+      {
+        "$type": "AxisStandard",
+        "DeviceId": "Spec_TransX",
+        "ControllerId": "StageController",
+        "AxisNodeId": "MainNode",
+        "Movement": "TransX",
+        "MoveAfterInit": 0,
+        "LimMin": -150,
+        "LimMax": 150
+      },
+      {
+        "$type": "AxisStandard",
+        "DeviceId": "Det_TransZ",
+        "ControllerId": "StageController",
+        "AxisNodeId": "DetectorNode",
+        "Movement": "TransZ",
+        "MoveAfterInit": 391,
+        "LimMin": 300,
+        "LimMax": 1000,
+        "GlobalRef": 233
+      },
+      {
+        "$type": "AxisStandard",
+        "DeviceId": "Spec_RotY",
+        "ControllerId": "StageController",
+        "AxisNodeId": "SampleRotationNode",
+        "Movement": "RotY",
+        "LimMin": -72000,
+        "LimMax": 72000
+      }
+    ]
+  },
+  "Detectors": [
+    {
+      "$type": "DetectorTest",
+      "DeviceId": "XRayDetector",
+      "Flip90ClockW": 0,
+      "FlipVert": true,
+      "BitDepth": 16,
+      "ImagePath": "",
+      "NumImages": 360,
+      "ImageStep": 1,
+      "DetectorModes": [
+        {
+          "Description": "1x1 Binning",
+          "ImgWidth": 2803,
+          "ImgHeight": 2401,
+          "PixelSize": 50,
+          "BinX": 1,
+          "BinY": 1,
+          "MinExpTime": 0.2
+        }
+      ]
+    }
+  ],
+  "Sources": [
+    {
+      "$type": "TestSource",
+      "DeviceId": "XRaySource",
+      "MaxCurrent": 300
+    },
+    {
+      "$type": "SourceXRAYWorX",
+      "DeviceId": "XRaySource2",
+      "MaxCurrent": 300
+    }
+  ],
+  "SystemDevices": [
+    {
+      "$type": "SampleGeometry",
+      "DeviceId": "SampleGeometry",
+      "DetectorId": "XRayDetector",
+      "SourceId": "XRaySource",
+      "RotationAxisId": "Spec_RotY",
+      "FodAxisId": "Spec_TransZ",
+      "FddAxisId": "Det_TransZ",
+      "ProjectionCount": 9,
+      "MaximumCylinderCount": 8,
+      "MaximumAnalysisDimension": 256,
+      "StabilizationDelayMilliseconds": 250,
+      "RotationAxisPixelOffset": 0.0,
+      "RecommendationImprovementThreshold": 0.12,
+      "CollisionMarginMillimetres": 0.0
+    }
+  ],
+  "Startup": [
+    {
+      "DeviceId": "StageController"
+    },
+    {
+      "DeviceId": "Spec_RotY"
+    },
+    {
+      "DeviceId": "Det_TransZ"
+    },
+    {
+      "DeviceId": "Spec_TransZ"
+    },
+    {
+      "DeviceId": "Spec_TransY"
+    },
+    {
+      "DeviceId": "Spec_TransX"
+    },
+    {
+      "DeviceId": "XRaySource"
+    },
+    {
+      "DeviceId": "XRayDetector"
+    },
+    {
+      "DeviceId": "SampleGeometry"
+    }
+  ]
+}

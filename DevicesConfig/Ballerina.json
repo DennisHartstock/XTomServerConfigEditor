@@ -1,0 +1,310 @@
+{
+  "$schema": "./json-devices-schema.json",
+  "SystemId": "System1",
+  "HostConfigurations": {
+    "ImageStorage": {
+      "LocalFallbackPath": "ScanBackup",
+      "DirectBufferCapacityFrames": 50,
+      "LocalSpoolBufferCapacityFrames": 50
+    },
+    "SessionControl": {
+      "SessionTimeoutSeconds": 30,
+      "CleanupIntervalSeconds": 1
+    },
+    "CameraStreams": {
+      "Cameras": [
+        {
+          "ServiceId": "camera.front.ImageStream",
+          "DisplayName": "Front camera",
+          "Enabled": true,
+          "DeviceIndex": 0,
+          "Backend": "DirectShow",
+          "Width": 640,
+          "Height": 480,
+          "FramesPerSecond": 10,
+          "JpegQuality": 80
+        },
+        {
+          "ServiceId": "camera.rear.ImageStream",
+          "DisplayName": "Rear camera",
+          "Enabled": false,
+          "DeviceIndex": 1,
+          "Backend": "DirectShow",
+          "Width": 640,
+          "Height": 480,
+          "FramesPerSecond": 10,
+          "JpegQuality": 80
+        }
+      ]
+    },
+    "DetectorStreams": {
+      "Raw": {
+        "MemoryBufferCapacityFrames": 50,
+        "SpoolWriteQueueCapacityFrames": 50
+      },
+      "Preview": {
+        "Enabled": true,
+        "Encoder": "NvencH264",
+        "Quality": 80,
+        "MaxFramesPerSecond": 30,
+        "Nvenc": {
+          "DirectCudaInput": true,
+          "TargetBitRateMbps": 20,
+          "MaximumBitRateMbps": 30,
+          "GopLengthFrames": 30
+        }
+      },
+      "Lossless": {
+        "Enabled": false,
+        "Compression": "Zstd",
+        "CompressionLevel": 3,
+        "IncludeChecksum": true
+      }
+    },
+    "XFlowProvider": {
+      "Enabled": true,
+      "AllowExecutionWithoutControlLease": false,
+      "Address": "http://127.0.0.1:5001",
+      "DelegatedControlAddress": "127.0.0.1:5070",
+      "InstanceId": "",
+      "IdentityFilePath": "",
+      "DisplayName": "XTom Server",
+      "MaxConcurrency": 1
+    }
+  },
+  "Assemblies": [
+    {
+      "Assembly": "DLLs\\TestDetector.dll",
+      "Type": "TestDetector.TestDetectorCreator",
+      "Alias": "DetectorTest"
+    },
+    {
+      "Assembly": "DLLs\\DetectorSpectrumLogic.dll",
+      "Type": "DetectorSpectrumLogic.DetectorSpectrumLogicCreator",
+      "Alias": "DetectorSL"
+    },
+    {
+      "Assembly": "DetectorIRay.dll",
+      "Type": "DetectorIRay.DetectorIRayCreator",
+      "Alias": "DetectorIRay"
+    },
+    {
+      "Assembly": "DLLs\\TestSource.dll",
+      "Type": "TestSource.TestSourceCreator",
+      "Alias": "TestSource"
+    },
+    {
+      "Assembly": "DLLs\\DetectorDexela.dll",
+      "Type": "DetectorDexela.DetectorDexelaCreator",
+      "Alias": "DetectorDexela"
+    },
+    {
+      "Assembly": "DLLs\\SourceHamamatsu.dll",
+      "Type": "SourceHamamatsu.HamamatsuSourceCreator",
+      "Alias": "HamamatsuL9181"
+    },
+    {
+      "Assembly": "DLLs\\SourceXRAYWorX.dll",
+      "Type": "SourceXRAYWorX.BridgedXRAYWorXSourceCreator",
+      "Alias": "SourceXRAYWorX"
+    },
+    {
+      "Assembly": "DLLs\\TestStage.dll",
+      "Type": "TestStage.TestStageCreator",
+      "Alias": "TestStage"
+    },
+    {
+      "Assembly": "DLLs\\StageBR.dll",
+      "Type": "StageBR.BrAxisCreator",
+      "Alias": "AxisBR"
+    },
+    {
+      "Assembly": "DLLs\\StageBR.dll",
+      "Type": "StageBR.BrStageCreator",
+      "Alias": "StageBR"
+    },
+    {
+      "Assembly": "DLLs\\XTomServer.OpcUa.dll",
+      "Type": "XTomServer.OpcUa.OpcUaConnectionCreator",
+      "Alias": "OpcUaConnection"
+    }
+  ],
+  "SystemDevices": [
+    {
+      "$type": "OpcUaConnection",
+      "DeviceId": "BrPlc",
+      "RemoteAccess": "None",
+      "EndpointUrl": "opc.tcp://192.168.26.251:4840",
+      "SecurityMode": "None",
+      "SecurityPolicyUri": "http://opcfoundation.org/UA/SecurityPolicy#None",
+      "AuthenticationMode": "Anonymous",
+      "UserName": "",
+      "Password": "",
+      "AutoAcceptUntrustedCertificates": true,
+      "NamespaceIndex": 5
+    }
+  ],
+  "AxesConfiguration": {
+    "AxisNodes": [
+      {
+        "NodeId": "MainNode",
+        "CollisionActors": [
+          {
+            "$type": "CollisionBox",
+            "ActorId": "CollisionBoxMain",
+            "MinX": -0.1,
+            "MaxX": 0.1,
+            "MinY": -200.0,
+            "MaxY": 0.0,
+            "MinZ": -150.0,
+            "MaxZ": 100.0,
+            "IsStatic": false
+          },
+          {
+            "$type": "CollisionBox",
+            "ActorId": "CollisionBoxSource",
+            "MinX": -100.0,
+            "MaxX": 100.0,
+            "MinY": -100.0,
+            "MaxY": 300.0,
+            "MinZ": -100.0,
+            "MaxZ": 0.0,
+            "IsStatic": true
+          }
+        ]
+      },
+      {
+        "NodeId": "DetectorNode",
+        "CollisionActors": [
+          {
+            "$type": "CollisionBox",
+            "ActorId": "CollisionBoxDetector",
+            "MinX": -200.0,
+            "MaxX": 200.0,
+            "MinY": -200.0,
+            "MaxY": 200.0,
+            "MinZ": -150.0,
+            "MaxZ": 10.0,
+            "IsStatic": false
+          }
+        ]
+      }
+    ],
+    "StageControllers": [
+      {
+        "$type": "TestStage",
+        "DeviceId": "StageController"
+      },
+      {
+        "$type": "StageBR",
+        "DeviceId": "StageControllerBR",
+        "ConnectionId": "BrPlc",
+        "BaseNode": "ns=6;s=::"
+      }
+    ],
+    "Axes": [
+      {
+        "$type": "AxisStandard",
+        "DeviceId": "Spec_TransZ",
+        "AxisNodeId": "MainNode",
+        "ControllerId": "StageController",
+        "Movement": "TransZ",
+        "LimMin": 0,
+        "LimMax": 1000
+      },
+      {
+        "$type": "AxisStandard",
+        "DeviceId": "Det_TransZ",
+        "ControllerId": "StageController",
+        "AxisNodeId": "DetectorNode",
+        "Movement": "TransZ",
+        "MoveAfterInit": 900,
+        "LimMin": 300,
+        "LimMax": 1000,
+        "GlobalRef": 233
+      },
+      {
+        "$type": "AxisBR",
+        "DeviceId": "Spec_RotY",
+        "ControllerId": "StageControllerBR",
+        "Movement": "RotY",
+        "AxisName": "SRY",
+        "DefaultVelocity": 20,
+        "DefaultAcceleration": 50,
+        "MoveEpsilon": 0.5,
+        "LimMin": -72000,
+        "LimMax": 72000
+      },
+      {
+        "$type": "AxisBR",
+        "DeviceId": "Spec_TransX",
+        "ControllerId": "StageControllerBR",
+        "Movement": "TransX",
+        "AxisName": "STX",
+        "DefaultVelocity": 20,
+        "DefaultAcceleration": 50,
+        "LimMin": -5000,
+        "LimMax": 5000
+      }
+    ]
+  },
+  "Detectors": [
+    {
+      "$type": "DetectorSL",
+      "DeviceId": "XRayDetector",
+      "Flip90ClockW": 0,
+      "FlipVert": true,
+      "BitDepth": 14,
+      "StartupGainMode": "High",
+      "DetectorModes": [
+        {
+          "Description": "1x1 Binning",
+          "ImgWidth": 2803,
+          "ImgHeight": 2401,
+          "PixelSize": 100,
+          "MinExpTime": 0.03,
+          "BadPixelMapFileName": "C:\\Users\\Xray\\source\\repos\\XTomServer\\XTomServer\\bin\\x64\\Debug\\net8.0-windows10.0.26100.0\\Imgs\\BadPixelMap_XRayDetector_1x1 Binning.bpm",
+          "BinX": 1,
+          "BinY": 1
+        }
+      ]
+    }
+  ],
+  "Sources": [
+    {
+      "$type": "HamamatsuL9181",
+      "DeviceId": "XRaySource",
+      "ComPort": "COM11",
+      "MaxCurrent": 300
+    }
+  ],
+  "Startup": [
+    {
+      "DeviceId": "BrPlc"
+    },
+    {
+      "DeviceId": "StageController"
+    },
+    {
+      "DeviceId": "StageControllerBR"
+    },
+    {
+      "DeviceId": "Spec_RotY"
+    },
+    {
+      "DeviceId": "Spec_TransZ"
+    },
+    {
+      "DeviceId": "Spec_TransX"
+    },
+    {
+      "DeviceId": "Det_TransZ"
+    },
+    {
+      "DeviceId": "XRaySource"
+    },
+    {
+      "DeviceId": "XRayDetector"
+    }
+  ]
+}

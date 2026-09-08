@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DeviceConfig Studio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark">✦</span><div><strong>DeviceConfig</strong><small>Studio</small></div></div>
+        <div class="file-status"><span class="status-dot"></span><span id="fileName">Keine Datei geöffnet</span><span id="dirtyState" class="dirty-badge hidden">ungespeichert</span></div>
+        <div class="top-actions"><button class="button ghost" id="openButton">Öffnen</button><button class="button primary" id="saveButton">Speichern</button><input id="fileInput" type="file" accept=".json,application/json" hidden /></div>
+      </header>
+      <main class="workspace">
+        <aside class="sidebar">
+          <div class="sidebar-heading">Konfiguration</div>
+          <nav id="sectionNav"></nav>
+          <div class="sidebar-footer"><button class="button ghost full" id="newButton">＋ Neue Konfiguration</button><button class="button ghost full" id="sampleButton">Beispiel laden</button></div>
+        </aside>
+        <section class="content">
+          <div class="content-header"><div><p class="eyebrow">DEVICE CONFIGURATION</p><h1 id="pageTitle">Willkommen</h1><p id="pageDescription">Öffne eine JSON-Datei oder lade die Beispielkonfiguration, um zu beginnen.</p></div><div class="header-tools"><button class="icon-button" id="validateButton" title="Konfiguration prüfen">✓ Prüfen</button><button class="icon-button" id="rawButton" title="Rohdaten anzeigen">{ } Rohdaten</button></div></div>
+          <div id="alert" class="alert hidden"></div>
+          <div id="emptyState" class="empty-state"><div class="empty-icon">◈</div><h2>Deine Konfiguration im Überblick</h2><p>Bearbeite Host-Dienste, Geräte und Startreihenfolge in einer klaren Oberfläche.</p><button class="button primary" id="emptyOpenButton">JSON-Datei öffnen</button></div>
+          <div id="editor" class="hidden"></div>
+        </section>
+      </main>
+    </div>
+    <dialog id="rawDialog"><div class="dialog-head"><div><p class="eyebrow">ADVANCED</p><h2>Rohdaten bearbeiten</h2></div><button class="close-button" id="closeRaw">×</button></div><textarea id="rawEditor" spellcheck="false"></textarea><div class="dialog-actions"><button class="button ghost" id="cancelRaw">Abbrechen</button><button class="button primary" id="applyRaw">Übernehmen</button></div></dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
