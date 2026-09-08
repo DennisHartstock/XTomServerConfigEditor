@@ -11,4 +11,6 @@ Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. 
 - Änderungen markieren die Datei als „ungespeichert“.
 - Geräte- und Assembly-Einträge können entfernt werden.
 - Rohdaten können über einen Advanced-Dialog bearbeitet und wieder übernommen werden.
+- Zahlenfelder und Pflichtfelder werden bei der Prüfung gegen die im Schema definierten Grenzen geprüft.
+- Wird die Anwendung direkt als `file://` geöffnet, stehen die bekannten Enum-Auswahlen über einen eingebauten Fallback weiterhin zur Verfügung.
 - Öffnen und Speichern erfolgen über lokale JSON-Dateien; Speichern lädt eine formatierte JSON-Datei herunter.
