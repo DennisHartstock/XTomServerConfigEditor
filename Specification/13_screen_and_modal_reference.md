@@ -25,3 +25,9 @@ Aktionen, die die aktuelle Konfiguration ersetzen, zeigen zusätzlich eine Best�
 ## Rohdaten-Dialog
 
 Der Dialog „Rohdaten bearbeiten“ zeigt die vollständige JSON-Struktur. „Übernehmen“ akzeptiert ausschließlich syntaktisch gültiges JSON; bei Fehlern bleibt der Dialog geöffnet und zeigt eine Fehlermeldung.
+
+## Service-Grenze
+
+Der Hauptbildschirm ist der Client des `studio-ui`-Service. Konfigurationen werden über den `configuration-service`-Vertrag geladen und ersetzt, Schema und Enum-Katalog kommen vom `schema-service`, die Prüfung gehört zum `validation-service`, und Speichern nutzt den `export-service`.
+
+Im statischen oder `file://`-Betrieb werden diese Verträge durch lokale Adapter erfüllt. Diese Adapter sind austauschbar; eine spätere XTom-Studio-Installation kann sie durch HTTP-Clients ersetzen, ohne Navigation oder Karten zu verändern. XTom Server und XFlow werden ausschließlich über getrennte Gateway-Grenzen angebunden.

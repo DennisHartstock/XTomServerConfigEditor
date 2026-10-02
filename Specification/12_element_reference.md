@@ -21,3 +21,5 @@ Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. 
 - Geräteverweise in Startup und Achsen werden gegen bekannte DeviceId-, ControllerId- und AxisNode-Werte geprüft.
 - Wird die Anwendung direkt als `file://` geöffnet, stehen die bekannten Enum-Auswahlen über einen eingebauten Fallback weiterhin zur Verfügung.
 - Öffnen und Speichern erfolgen über lokale JSON-Dateien; Speichern lädt eine formatierte JSON-Datei herunter.
+- Die UI greift für Konfigurationslebenszyklus, Schemaauflösung und Export über `StudioServices` auf getrennte Serviceverträge zu. Im lokalen Browsermodus werden dafür lokale Adapter verwendet; der Editor hängt nicht direkt von einem konkreten XTom-Server ab.
+- Der Export-Service setzt den Ungespeichert-Status erst nach Übergabe an den Browser-Download zurück.

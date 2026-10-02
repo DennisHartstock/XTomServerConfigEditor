@@ -1,0 +1,59 @@
+{
+  "architecture": "XTom Studio distributed configuration platform",
+  "version": "1.0",
+  "services": [
+    {
+      "id": "studio-ui",
+      "role": "configuration-editor",
+      "transport": "browser",
+      "owns": ["navigation", "editing-session", "local-history"]
+    },
+    {
+      "id": "configuration-service",
+      "role": "configuration-lifecycle",
+      "transport": "http-json",
+      "endpoint": "/api/v1/configurations",
+      "owns": ["load", "replace", "create", "revision"]
+    },
+    {
+      "id": "schema-service",
+      "role": "schema-and-catalog",
+      "transport": "http-json",
+      "endpoint": "/api/v1/schema/device-config",
+      "owns": ["schema", "enum-catalog"]
+    },
+    {
+      "id": "validation-service",
+      "role": "configuration-validation",
+      "transport": "http-json",
+      "endpoint": "/api/v1/validation/device-config",
+      "owns": ["schema-rules", "reference-rules"]
+    },
+    {
+      "id": "export-service",
+      "role": "configuration-export",
+      "transport": "http-json",
+      "endpoint": "/api/v1/exports/device-config",
+      "owns": ["canonical-json"]
+    },
+    {
+      "id": "xtom-server-gateway",
+      "role": "remote-machine-control",
+      "transport": "grpc",
+      "endpoint": "http://localhost:5001",
+      "owns": ["measurement", "action", "monitor", "configuration-version"]
+    },
+    {
+      "id": "xflow-gateway",
+      "role": "automation",
+      "transport": "grpc",
+      "endpoint": "http://localhost:5002",
+      "owns": ["workflow-dispatch", "control-lease"]
+    }
+  ],
+  "localMode": {
+    "description": "The static editor uses in-process adapters implementing the same contracts.",
+    "networkCalls": false,
+    "replaceableAdapters": true
+  }
+}
