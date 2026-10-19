@@ -36,3 +36,7 @@ as proof that XTomServer will accept a configuration.
 The first remote contract operation is `ValidateDeviceConfiguration`. It
 accepts the contract ID, contract version, and draft JSON and does not mutate
 the active profile.
+
+`GetDeviceConfiguration` and `SaveDeviceConfiguration` provide versioned draft
+read/write. Save is atomic, validates before writing, accepts only a safe JSON
+file name, and never activates the profile or restarts devices.

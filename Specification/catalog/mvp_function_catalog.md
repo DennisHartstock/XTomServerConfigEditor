@@ -20,4 +20,8 @@ editor's local validator remains an offline diagnostic only.
 `ValidateDeviceConfiguration` is the first remote configuration capability; it
 is read-only and requires an exact contract ID/version match.
 
+`GetDeviceConfiguration` and `SaveDeviceConfiguration` are the draft
+configuration capabilities. Save is atomic and non-activating; profile
+selection and restart remain separate operations.
+
 The MVP keeps local editing functional. Remote gateways are explicit integration points and are not silently folded into the configuration editor.
