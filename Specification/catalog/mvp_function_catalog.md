@@ -17,4 +17,7 @@ must reject unsupported contract versions. The server-side validator is the
 authority for structural/reference checks before remote validation or save; the
 editor's local validator remains an offline diagnostic only.
 
+`ValidateDeviceConfiguration` is the first remote configuration capability; it
+is read-only and requires an exact contract ID/version match.
+
 The MVP keeps local editing functional. Remote gateways are explicit integration points and are not silently folded into the configuration editor.

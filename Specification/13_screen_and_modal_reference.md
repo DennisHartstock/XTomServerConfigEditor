@@ -13,6 +13,10 @@ unbekannte Startup-/Axis-Referenzen, Dependency-Reihenfolge und
 treiberspezifische `$type`-Regeln erneut geprüft. Eine erfolgreiche lokale
 Prüfung ersetzt diese Serverprüfung nicht.
 
+Eine spätere Remote-Validierungsaktion zeigt die vom XTomServer gelieferten
+Fehler gesammelt an und verändert weder das aktive Profil noch den
+Ungespeichert-Status des lokalen Drafts.
+
 Die Schema-Prüfung berücksichtigt die Top-Level-Bereiche `MeasurementOptions`, `Detectors`, `Sources`, `Measurements`, `AxesConfiguration` und `Startup`. Gerätespezifische Eigenschaften dürfen im Contract als Erweiterung erscheinen; ihre konkrete Gültigkeit wird erst durch XTomServer anhand des `$type` geprüft.
 
 Wenn der versionierte Vertrag im lokalen `file://`-Modus nicht geladen werden kann, verwendet die Oberfläche die bekannten Enum-Definitionen als Fallback und meldet keinen technischen Schema-Ladefehler. Der aktive Contract wird dabei nicht auf eine andere Version umgestellt.

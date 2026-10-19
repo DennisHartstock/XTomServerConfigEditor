@@ -41,7 +41,7 @@
       "role": "remote-machine-control",
       "transport": "grpc",
       "endpoint": "http://localhost:5001",
-      "owns": ["measurement", "action", "monitor", "configuration-version"]
+      "owns": ["measurement", "action", "monitor", "configuration-version", "configuration-validation", "contract-negotiation"]
     },
     {
       "id": "xflow-gateway",

@@ -32,3 +32,7 @@ Server-side validation is authoritative for version negotiation, polymorphic
 creator compatibility, dependency ordering, and driver-specific invariants.
 The browser validation remains a fast local diagnostic and must not be treated
 as proof that XTomServer will accept a configuration.
+
+The first remote contract operation is `ValidateDeviceConfiguration`. It
+accepts the contract ID, contract version, and draft JSON and does not mutate
+the active profile.
