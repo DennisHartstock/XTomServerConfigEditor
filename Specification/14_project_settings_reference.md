@@ -22,3 +22,7 @@ Remote-Drafts werden über `GetDeviceConfiguration` geladen und mit
 `SaveDeviceConfiguration` atomar gespeichert. Der Dateiname darf keine
 Verzeichniskomponenten enthalten und muss auf `.json` enden. Speichern wählt
 das Profil nicht automatisch aus und startet den Server nicht neu.
+
+`SelectDeviceConfiguration` validiert das ausgewählte Profil vor dem Schreiben
+der Pending-Auswahl. Ein fehlerhaftes Profil wird nicht als Neustart-Ziel
+gespeichert.
