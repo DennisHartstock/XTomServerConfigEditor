@@ -25,3 +25,4 @@ Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. 
 - Die UI greift für Konfigurationslebenszyklus, Schemaauflösung und Export über `StudioServices` auf getrennte Serviceverträge zu. Im lokalen Browsermodus werden dafür lokale Adapter verwendet; der Editor hängt nicht direkt von einem konkreten XTom-Server ab.
 - Der Export-Service setzt den Ungespeichert-Status erst nach Übergabe an den Browser-Download zurück.
 - Neue Konfigurationen tragen den `$schema`-Verweis des versionierten DeviceConfig-Vertrags. Ein Schema-Fallback ist nur ein lokaler Kompatibilitätsmodus und darf keinen anderen Vertrag stillschweigend ersetzen.
+- Der Export normalisiert den `$schema`-Verweis auch bei älteren geladenen Profilen auf den aktuellen versionierten Vertrag; die laufende Editing-Session wird dadurch nicht stillschweigend umgeschrieben.

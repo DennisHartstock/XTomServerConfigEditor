@@ -8,7 +8,7 @@ Die Anwendung kann über einen lokalen Webserver oder direkt als HTML-Datei gest
 
 ## Export
 
-Der Export schreibt die aktuell bearbeitete Struktur als UTF-8-JSON mit zweistelliger Einrückung und abschließendem Zeilenumbruch. Die Dateiendung ist `.json`.
+Der Export schreibt die aktuell bearbeitete Struktur als UTF-8-JSON mit zweistelliger Einrückung und abschließendem Zeilenumbruch. Die Dateiendung ist `.json`. Beim Export wird `$schema` auf `Contracts/DeviceConfig/v1/device-config.schema.json` normalisiert, damit auch ältere geladene Profile den aktuellen versionierten Contract referenzieren.
 
 Der Editor führt für die aktuelle Konfiguration eine lokale Änderungshistorie. Beim Laden einer Datei beginnt eine neue Historie; Speichern setzt nur den Ungespeichert-Status zurück.
 

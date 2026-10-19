@@ -35,7 +35,9 @@ const StudioServices=(()=>{
   const validation={run(configValue,root){return {config:clone(configValue),schema:clone(root),errors:[]};}};
   const exporter={
     download(value,name){
-      const blob=new Blob([JSON.stringify(value,null,2)+'\n'],{type:'application/json'});
+      const exported=clone(value)||{};
+      exported.$schema=deviceConfigContract.schemaPath;
+      const blob=new Blob([JSON.stringify(exported,null,2)+'\n'],{type:'application/json'});
       const link=document.createElement('a');
       link.href=URL.createObjectURL(blob);
       link.download=name||'DeviceConfig.json';
