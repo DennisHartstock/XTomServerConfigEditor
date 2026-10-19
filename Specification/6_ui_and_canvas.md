@@ -7,3 +7,5 @@ Data operations cross service boundaries through `StudioServices`. The UI must n
 The local adapter mode keeps the existing static-server and `file://` workflows available while remote service implementations are introduced incrementally.
 
 The shell follows the XFlow visual language locally: Roboto typography, a dark LK Blue AppBar, a floating white navigation panel, `#F5F5F5` workspace background, and white rounded editor cards with XFlow-compatible shadows. This is a presentation-layer alignment and does not introduce an XFlow runtime dependency.
+
+The navigation is an Explorer-style tree rooted at `DeviceConfig`; expandable groups reveal leaf editor sections, while expansion state remains presentation-only.

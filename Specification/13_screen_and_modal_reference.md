@@ -4,7 +4,7 @@
 
 Der Hauptbildschirm besteht aus Topbar, linker Bereichsnavigation und einem zentralen Editor. Ohne geladene Konfiguration wird ein Empty State mit Öffnen- und Beispiel-laden-Aktion angezeigt.
 
-Die visuelle Shell folgt dem XFlow-Projekt: eine dunkelblaue AppBar, eine schwebende weiße Sidenav auf `#F5F5F5` und weiße, abgerundete Editor-Panels. Primäraktionen verwenden LK Blue; Status- und Fehlerfarben folgen den XFlow-Semantikfarben. Auf schmalen Ansichten wird die Sidenav oberhalb des Inhalts angeordnet und die Kopfzeile darf umbrechen.
+Die visuelle Shell folgt dem XFlow-Projekt: eine dunkelblaue AppBar, eine schwebende weiße Sidenav auf `#F5F5F5` und weiße, abgerundete Editor-Panels. Primäraktionen verwenden LK Blue; Status- und Fehlerfarben folgen den XFlow-Semantikfarben. Die Sidenav zeigt die Konfigurationsbereiche als Windows-Explorer-artigen Baum: `DeviceConfig` ist der Root, Gruppen können expandiert oder eingeklappt werden, und die aktive Blattseite wird blau markiert. Auf schmalen Ansichten wird die Sidenav oberhalb des Inhalts angeordnet und die Kopfzeile darf umbrechen.
 
 Enum-Felder aus `Contracts/DeviceConfig/v1/device-config.schema.json` erscheinen in den strukturierten Bereichen als Dropdowns. Die Auswahl wird unmittelbar in die JSON-Struktur geschrieben. Die Prüfung meldet fehlende Pflichtfelder, falsche Datentypen, ungültige Enum-Werte sowie Werte außerhalb von Minimum/Maximum und MinLength/MinItems.
 

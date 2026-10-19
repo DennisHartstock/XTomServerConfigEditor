@@ -9,6 +9,7 @@ Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. 
 - Die Oberfläche übernimmt die XFlow-Tokens: Roboto, `#F5F5F5` als Arbeitsflächenhintergrund, LK Blue `#002F6C` für Primäraktionen und `#001B3D` für die dunkle AppBar.
 - Die Navigation wird als schwebende weiße Sidenav mit 16 px Außenabstand, 250 px Breite, 12 px Radius und aktivem blauem Eintrag dargestellt.
 - Editor-Karten, Empty State und Dialoge verwenden weiße Paper-Flächen, 12 px Radius und die XFlow-kompatible dezente Schattenhierarchie. Die responsive Navigation bleibt funktional identisch.
+- Die linke Konfigurationsnavigation verwendet eine Explorer-Baumstruktur mit Root-Knoten `DeviceConfig`, aufklappbaren Gruppenknoten und eingerückten Blattknoten. Chevron- und Ordnerzustand zeigen die Expansion an; Blattknoten wechseln den aktiven Editor-Bereich.
 
 ### Bearbeitungsregeln
 
