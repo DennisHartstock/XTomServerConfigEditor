@@ -8,7 +8,7 @@ Die visuelle Shell folgt dem XFlow-Projekt: eine dunkelblaue AppBar, eine schweb
 
 Die Undo-/Redo-/Öffnen-Aktionen in der AppBar bleiben auf dem dunklen Hintergrund kontrastreich sichtbar; nur „Speichern“ erhält den gefüllten Primäraktionsstil.
 
-Alle strukturierten `DeviceId`-Referenzen werden über ein Auswahlmenü aus den bekannten Komponenten gesetzt. Startup- und Achsenreferenzen verwenden damit dieselbe Komponentenliste; ein leerer Eintrag bedeutet „keine Komponente ausgewählt“.
+Die `$type`-Felder der strukturierten Komponenten werden über gruppierte Auswahlmenüs gesetzt: Detektoren zeigen Detektortypen, Quellen Quellentypen, Achsen Stage-/Axis-Typen und Messungen Measurement-Creator-Typen. `DeviceId` bleibt ein Textfeld, weil es die frei definierte Instanzkennung ist.
 
 Enum-Felder aus `Contracts/DeviceConfig/v1/device-config.schema.json` erscheinen in den strukturierten Bereichen als Dropdowns. Die Auswahl wird unmittelbar in die JSON-Struktur geschrieben. Die Prüfung meldet fehlende Pflichtfelder, falsche Datentypen, ungültige Enum-Werte sowie Werte außerhalb von Minimum/Maximum und MinLength/MinItems.
 
