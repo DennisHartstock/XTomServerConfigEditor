@@ -4,6 +4,8 @@
 
 Die Anwendung ist als dependency-freier Browser-Editor umgesetzt. `index.html`, `styles.css` und `app.js` werden direkt ausgeliefert; Beispielkonfigurationen liegen unter `DevicesConfig/`.
 
+`styles.css` bildet die XFlow-Designsystemwerte lokal ab, damit der dependency-freie Betrieb erhalten bleibt. Die visuelle Anpassung verändert keine Service-Grenzen, Contract-IDs, Exportregeln oder lokale Dateiabläufe.
+
 Die Anwendung kann über einen lokalen Webserver oder direkt als HTML-Datei gestartet werden. Im direkten Dateimodus sind schemaabhängige Detailgrenzen eingeschränkt, die bekannten Dropdown-Auswahlen und die Grundprüfung bleiben verfügbar. Der aktive Vertrag ist `procon.xtom.device-config@1.0.0` aus `Contracts/DeviceConfig/v1`.
 
 ## Export

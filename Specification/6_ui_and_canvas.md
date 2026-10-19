@@ -5,3 +5,5 @@ The DeviceConfig Studio screen remains the editing client in the XTom Studio arc
 Data operations cross service boundaries through `StudioServices`. The UI must not embed XTom Server or XFlow implementation types. The service manifest is the source of truth for deployable responsibilities and transport choices.
 
 The local adapter mode keeps the existing static-server and `file://` workflows available while remote service implementations are introduced incrementally.
+
+The shell follows the XFlow visual language locally: Roboto typography, a dark LK Blue AppBar, a floating white navigation panel, `#F5F5F5` workspace background, and white rounded editor cards with XFlow-compatible shadows. This is a presentation-layer alignment and does not introduce an XFlow runtime dependency.
