@@ -120,6 +120,19 @@
         }
       }
     },
+    "MeasurementOptions": {
+      "type": "object",
+      "properties": {
+        "RingCorrectionJsonOptions": {
+          "type": "object",
+          "properties": {
+            "PixelShift": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
     "Assemblies": {
       "type": "array",
       "description": "An array of assemblies.",
@@ -250,37 +263,141 @@
         }
       }
     },
-    "AxesConfiguration":{
+    "AxesConfiguration": {
       "type": "object",
-      "description": "An array of assemblies.",      
       "properties": {
-          "AxisNodes":{
-            "type": "array",
-            "description": "Relative path to device dll.",
-            "minItems": 1,
-            "items": {
-              "type": "object",
-              "required":["NodeId"],
-              "properties": {
-                "NodeId":{
-                  "type": "string"
-                },
-                "CollisionActors":{
-
-                }
+        "AxisNodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["NodeId"],
+            "properties": {
+              "NodeId": { "type": "string", "minLength": 1 },
+              "DependedNodeId": { "type": "string" },
+              "CollisionActors": {
+                "type": "array",
+                "items": { "type": "object", "required": ["$type"], "properties": { "$type": { "type": "string" } }, "additionalProperties": true }
               }
-            }
-          },
-          "Type":{
-            "type": "string",
-            "description": "Relative path to device dll."
-          },
-          "Alias":{
-            "type": "string",
-            "description": "Alias name of the dll."
+            },
+            "additionalProperties": true
           }
-        }        
+        },
+        "StageControllers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["$type", "DeviceId"],
+            "properties": {
+              "$type": { "type": "string", "minLength": 1 },
+              "DeviceId": { "type": "string", "minLength": 1 },
+              "RemoteAccess": { "type": "string", "enum": ["None", "ReadOnly", "Full"] },
+              "DependsOn": { "type": "array", "items": { "type": "string" } }
+            },
+            "additionalProperties": true
+          }
+        },
+        "Axes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["$type", "DeviceId", "ControllerId", "Movement"],
+            "properties": {
+              "$type": { "type": "string", "minLength": 1 },
+              "DeviceId": { "type": "string", "minLength": 1 },
+              "RemoteAccess": { "type": "string", "enum": ["None", "ReadOnly", "Full"] },
+              "DependsOn": { "type": "array", "items": { "type": "string" } },
+              "ControllerId": { "type": "string", "minLength": 1 },
+              "Movement": { "type": "string", "minLength": 1 },
+              "AxisNodeId": { "type": "string" },
+              "AxisIdForReference": { "type": "string" },
+              "MoveAfterInit": { "type": "number" },
+              "HomeAlways": { "type": "boolean" },
+              "IsCriticalStartupAxis": { "type": "boolean" },
+              "InvertTravelDirection": { "type": "boolean" },
+              "AxisOffsetFixed": { "type": "number" },
+              "MoveEpsilon": { "type": "number", "minimum": 0 },
+              "LimMin": { "type": "number" },
+              "LimMax": { "type": "number" },
+              "MinAcceleration": { "type": "number" },
+              "MaxAcceleration": { "type": "number" },
+              "MinVelocity": { "type": "number" },
+              "MaxVelocity": { "type": "number" },
+              "GlobalRef": { "type": "number" }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Detectors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["$type", "DeviceId"],
+        "properties": {
+          "$type": { "type": "string", "minLength": 1 },
+          "DeviceId": { "type": "string", "minLength": 1 },
+          "RemoteAccess": { "type": "string", "enum": ["None", "ReadOnly", "Full"] },
+          "DependsOn": { "type": "array", "items": { "type": "string" } },
+          "BitDepth": { "type": "integer", "minimum": 1 },
+          "ScaleToBitDepth": { "type": "integer", "minimum": 1 },
+          "UseGPU": { "type": "boolean" },
+          "Flip90ClockW": { "type": "integer" },
+          "FlipHorz": { "type": "boolean" },
+          "FlipVert": { "type": "boolean" },
+          "StartMode": { "type": "integer" },
+          "ScanTimeFactor": { "type": "number" },
+          "ScanTimeOffset": { "type": "number" },
+          "UseImageHealing": { "type": "boolean" },
+          "DetectorRotation": { "type": "number" },
+          "DetectorShiftX": { "type": "number" },
+          "DetectorShiftY": { "type": "number" },
+          "DeviceConfiguration": { "type": "object", "additionalProperties": true }
+        },
+        "additionalProperties": true
       }
-    
+    },
+    "Sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["$type", "DeviceId"],
+        "properties": {
+          "$type": { "type": "string", "minLength": 1 },
+          "DeviceId": { "type": "string", "minLength": 1 },
+          "RemoteAccess": { "type": "string", "enum": ["None", "ReadOnly", "Full"] },
+          "DependsOn": { "type": "array", "items": { "type": "string" } },
+          "MinVoltage": { "type": "number" },
+          "MaxVoltage": { "type": "number" },
+          "MinCurrent": { "type": "number" },
+          "MaxCurrent": { "type": "number" },
+          "MaxVoltageDeviation": { "type": "number" },
+          "MaxCurrentDeviation": { "type": "number" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "Measurements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["$type", "MeasurementName"],
+        "properties": {
+          "$type": { "type": "string", "minLength": 1 },
+          "MeasurementName": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": true
+      }
+    },
+    "Startup": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["DeviceId"],
+        "properties": { "DeviceId": { "type": "string", "minLength": 1 } },
+        "additionalProperties": false
+      }
     }
+  }
 }

@@ -8,6 +8,8 @@ Enum-Felder aus `Contracts/DeviceConfig/v1/device-config.schema.json` erscheinen
 
 Zusätzlich prüft die Validierung die fachlichen Querverweise zwischen Startup-Geräten, Achsen, Controllern und AxisNodes.
 
+Die Schema-Prüfung berücksichtigt die Top-Level-Bereiche `MeasurementOptions`, `Detectors`, `Sources`, `Measurements`, `AxesConfiguration` und `Startup`. Gerätespezifische Eigenschaften dürfen im Contract als Erweiterung erscheinen; ihre konkrete Gültigkeit wird erst durch XTomServer anhand des `$type` geprüft.
+
 Wenn der versionierte Vertrag im lokalen `file://`-Modus nicht geladen werden kann, verwendet die Oberfläche die bekannten Enum-Definitionen als Fallback und meldet keinen technischen Schema-Ladefehler. Der aktive Contract wird dabei nicht auf eine andere Version umgestellt.
 
 Listenbereiche besitzen eine Hinzufügen-Aktion. Neue Einträge werden direkt in der jeweiligen Liste angelegt und anschließend im gleichen Formular bearbeitet.

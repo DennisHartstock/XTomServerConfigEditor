@@ -11,8 +11,8 @@
 
 The schema service currently serves the baseline package
 `procon.xtom.device-config@1.0.0` from `Contracts/DeviceConfig/v1`.
-`Detectors`, `Sources`, `Measurements`, and `MeasurementOptions` still require
-reconciliation with the server model before a remote configuration API is
-introduced. XTomServer must reject unsupported contract versions.
+Its top-level shape is reconciled with `SystemJsonConfiguration`; detailed
+polymorphic creator validation remains a server responsibility. XTomServer
+must reject unsupported contract versions.
 
 The MVP keeps local editing functional. Remote gateways are explicit integration points and are not silently folded into the configuration editor.

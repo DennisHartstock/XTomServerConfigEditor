@@ -20,8 +20,10 @@ The current package is `Contracts/DeviceConfig/v1` (`1.0.0`) and contains the
 schema plus manifest consumed by the editor and shipped with XTomServer. This
 first package is a baseline derived from the existing editor schema; before a
 remote save/apply API is enabled it must be reconciled with all properties of
-`SystemJsonConfiguration`. The schema describes transport/UI shape; XTomServer
-remains authoritative for polymorphic creator types and runtime dependency
-invariants.
+`SystemJsonConfiguration`. The baseline now describes `MeasurementOptions`,
+`Detectors`, `Sources`, `Measurements`, `AxesConfiguration`, and `Startup` in
+addition to the existing host and system-device sections. The schema describes
+transport/UI shape; XTomServer remains authoritative for polymorphic creator
+types and runtime dependency invariants.
 
 The browser's local adapters implement these contracts during offline editing. They are replaceable implementations, not additional persisted model state.
