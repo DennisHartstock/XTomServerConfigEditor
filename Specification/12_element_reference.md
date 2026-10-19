@@ -10,6 +10,7 @@ Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. 
 - Die Navigation wird als schwebende weiße Sidenav mit 16 px Außenabstand, 250 px Breite, 12 px Radius und aktivem blauem Eintrag dargestellt.
 - Editor-Karten, Empty State und Dialoge verwenden weiße Paper-Flächen, 12 px Radius und die XFlow-kompatible dezente Schattenhierarchie. Die responsive Navigation bleibt funktional identisch.
 - Die linke Konfigurationsnavigation verwendet eine Explorer-Baumstruktur mit Root-Knoten `DeviceConfig`, aufklappbaren Gruppenknoten und eingerückten Blattknoten. Chevron- und Ordnerzustand zeigen die Expansion an; Blattknoten wechseln den aktiven Editor-Bereich.
+- Ghost-Buttons in der dunklen AppBar verwenden transparente Flächen und helle Icons/Text; deaktivierte Undo-/Redo-Buttons bleiben sichtbar, werden aber gedimmt.
 
 ### Bearbeitungsregeln
 
