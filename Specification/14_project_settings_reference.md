@@ -10,6 +10,8 @@ Die Baumzustände der linken Navigation werden ausschließlich im UI-State gehal
 
 Die Typ-Auswahllisten werden zur Laufzeit aus dem Assembly-Katalog des geladenen Drafts und den bekannten Measurement-Creator-Typen abgeleitet. Sie sind kein zusätzlicher Persistenz- oder Servicevertrag; Export und Validierung verwenden weiterhin `$type` und `DeviceId` im bestehenden Modell.
 
+Die 3D-Collisionbox-Ansicht ist eine lokale Präsentations- und Editierhilfe ohne zusätzliche Laufzeitabhängigkeit. Geometrieänderungen werden über die bestehende lokale Änderungshistorie und den normalen JSON-Export persistiert.
+
 Die Anwendung kann über einen lokalen Webserver oder direkt als HTML-Datei gestartet werden. Im direkten Dateimodus sind schemaabhängige Detailgrenzen eingeschränkt, die bekannten Dropdown-Auswahlen und die Grundprüfung bleiben verfügbar. Der aktive Vertrag ist `procon.xtom.device-config@1.0.0` aus `Contracts/DeviceConfig/v1`.
 
 ## Export

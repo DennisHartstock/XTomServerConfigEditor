@@ -12,6 +12,7 @@ Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. 
 - Die linke Konfigurationsnavigation verwendet eine Explorer-Baumstruktur mit Root-Knoten `DeviceConfig`, aufklappbaren Gruppenknoten und eingerückten Blattknoten. Chevron- und Ordnerzustand zeigen die Expansion an; Blattknoten wechseln den aktiven Editor-Bereich.
 - Ghost-Buttons in der dunklen AppBar verwenden transparente Flächen und helle Icons/Text; deaktivierte Undo-/Redo-Buttons bleiben sichtbar, werden aber gedimmt.
 - Die `$type`-Felder der Komponenten werden als Auswahlmenüs gerendert. Die Detektoren, Quellen, Stage-Controller und Achsen beziehen ihre möglichen Typen aus dem geladenen Assembly-Katalog; Messungen verwenden die bekannten Measurement-Creator-Typen. `DeviceId` bleibt die frei vergebbare Instanz-ID.
+- CollisionActors werden im Bereich „Achsen & Kollision“ als anklickbare 3D-Boxen dargestellt. Die ausgewählte Box kann über ihr Eigenschaftenpanel einzeln bearbeitet werden; Änderungen werden direkt in `AxesConfiguration.AxisNodes[].CollisionActors[]` geschrieben.
 
 ### Bearbeitungsregeln
 

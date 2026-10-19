@@ -10,6 +10,8 @@ Die Undo-/Redo-/Öffnen-Aktionen in der AppBar bleiben auf dem dunklen Hintergru
 
 Die `$type`-Felder der strukturierten Komponenten werden über gruppierte Auswahlmenüs gesetzt: Detektoren zeigen Detektortypen, Quellen Quellentypen, Achsen Stage-/Axis-Typen und Messungen Measurement-Creator-Typen. `DeviceId` bleibt ein Textfeld, weil es die frei definierte Instanzkennung ist.
 
+„Achsen & Kollision“ enthält eine 3D-Ansicht der CollisionActors. Auswahl ist sowohl über die Box als auch über die Komponentenliste möglich. Das Inspector-Panel zeigt je nach `$type` die Box-Grenzen (`MinX`/`MaxX`, `MinY`/`MaxY`, `MinZ`/`MaxZ`) beziehungsweise Radius/Höhe einer `SampleCollisionBox` sowie `ActorId`, `$type` und `IsStatic`.
+
 Enum-Felder aus `Contracts/DeviceConfig/v1/device-config.schema.json` erscheinen in den strukturierten Bereichen als Dropdowns. Die Auswahl wird unmittelbar in die JSON-Struktur geschrieben. Die Prüfung meldet fehlende Pflichtfelder, falsche Datentypen, ungültige Enum-Werte sowie Werte außerhalb von Minimum/Maximum und MinLength/MinItems.
 
 Zusätzlich prüft die Validierung die fachlichen Querverweise zwischen Startup-Geräten, Achsen, Controllern und AxisNodes.
