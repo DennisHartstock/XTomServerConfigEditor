@@ -27,3 +27,8 @@ transport/UI shape; XTomServer remains authoritative for polymorphic creator
 types and runtime dependency invariants.
 
 The browser's local adapters implement these contracts during offline editing. They are replaceable implementations, not additional persisted model state.
+
+Server-side validation is authoritative for version negotiation, polymorphic
+creator compatibility, dependency ordering, and driver-specific invariants.
+The browser validation remains a fast local diagnostic and must not be treated
+as proof that XTomServer will accept a configuration.

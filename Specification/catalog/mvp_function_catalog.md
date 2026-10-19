@@ -13,6 +13,8 @@ The schema service currently serves the baseline package
 `procon.xtom.device-config@1.0.0` from `Contracts/DeviceConfig/v1`.
 Its top-level shape is reconciled with `SystemJsonConfiguration`; detailed
 polymorphic creator validation remains a server responsibility. XTomServer
-must reject unsupported contract versions.
+must reject unsupported contract versions. The server-side validator is the
+authority for structural/reference checks before remote validation or save; the
+editor's local validator remains an offline diagnostic only.
 
 The MVP keeps local editing functional. Remote gateways are explicit integration points and are not silently folded into the configuration editor.
