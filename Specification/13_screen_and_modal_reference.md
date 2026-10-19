@@ -22,6 +22,10 @@ Serverfehler, wenn das Zielprofil die strukturellen oder fachlichen
 Referenzprüfungen nicht besteht; die bisherige Pending-Auswahl bleibt dabei
 erhalten.
 
+Der Review-Schritt zeigt vor dem Speichern die vom Server gelieferten
+Änderungen als Add/Remove/Change-Liste. Dieser Schritt verändert weder Profil
+noch Geräte.
+
 Die Schema-Prüfung berücksichtigt die Top-Level-Bereiche `MeasurementOptions`, `Detectors`, `Sources`, `Measurements`, `AxesConfiguration` und `Startup`. Gerätespezifische Eigenschaften dürfen im Contract als Erweiterung erscheinen; ihre konkrete Gültigkeit wird erst durch XTomServer anhand des `$type` geprüft.
 
 Wenn der versionierte Vertrag im lokalen `file://`-Modus nicht geladen werden kann, verwendet die Oberfläche die bekannten Enum-Definitionen als Fallback und meldet keinen technischen Schema-Ladefehler. Der aktive Contract wird dabei nicht auf eine andere Version umgestellt.

@@ -24,4 +24,7 @@ is read-only and requires an exact contract ID/version match.
 configuration capabilities. Save is atomic and non-activating; profile
 selection and restart remain separate operations.
 
+`PreviewDeviceConfiguration` supplies the read-only diff used by the review
+step before save.
+
 The MVP keeps local editing functional. Remote gateways are explicit integration points and are not silently folded into the configuration editor.

@@ -40,3 +40,7 @@ the active profile.
 `GetDeviceConfiguration` and `SaveDeviceConfiguration` provide versioned draft
 read/write. Save is atomic, validates before writing, accepts only a safe JSON
 file name, and never activates the profile or restarts devices.
+
+`PreviewDeviceConfiguration` is the read-only review operation. It validates a
+draft and returns a deterministic property-level diff against a selected base
+profile before save.
