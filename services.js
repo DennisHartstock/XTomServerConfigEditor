@@ -7,6 +7,7 @@
  */
 const StudioServices=(()=>{
   const status={configuration:'local',schema:'offline',validation:'local',export:'local'};
+  const deviceConfigContract={id:'procon.xtom.device-config',version:'1.0.0',schemaPath:'Contracts/DeviceConfig/v1/device-config.schema.json'};
   const clone=value=>value===undefined?undefined:JSON.parse(JSON.stringify(value));
   const config={
     load(value,name){return {value:clone(value),name:name||'DeviceConfig.json',revision:0};},
@@ -42,5 +43,5 @@ const StudioServices=(()=>{
       URL.revokeObjectURL(link.href);
     }
   };
-  return {status,config,schema,validation,exporter};
+  return {status,contract:{deviceConfig:deviceConfigContract},config,schema,validation,exporter};
 })();

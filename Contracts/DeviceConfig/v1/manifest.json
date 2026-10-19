@@ -1,0 +1,10 @@
+{
+  "contractId": "procon.xtom.device-config",
+  "version": "1.0.0",
+  "schema": "device-config.schema.json",
+  "canonicalModel": "XTomServer.DeviceConfig",
+  "compatibility": {
+    "minimumServerContract": "1.0.0",
+    "persistedMetadata": ["$schema"]
+  }
+}

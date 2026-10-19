@@ -7,7 +7,7 @@ Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. 
 ### Bearbeitungsregeln
 
 - Text-, Zahlen- und Boolean-Felder werden direkt bei der Eingabe in das interne Modell übernommen.
-- Schema-Werte mit `enum` werden dynamisch aus `DevicesConfig/json-devices-schema.json` gelesen und als Dropdown dargestellt. Kamera-Streams werden im Host-Bereich ebenfalls strukturiert bearbeitet.
+- Schema-Werte mit `enum` werden dynamisch aus dem versionierten Vertrag `Contracts/DeviceConfig/v1/device-config.schema.json` gelesen und als Dropdown dargestellt. Kamera-Streams werden im Host-Bereich ebenfalls strukturiert bearbeitet.
 - Änderungen markieren die Datei als „ungespeichert“.
 - Geräte- und Assembly-Einträge können entfernt werden.
 - Neue Kamera-, Detektor-, Quellen-, Systemgeräte-, Assembly- und Startup-Einträge können mit schema-kompatiblen Standardwerten angelegt werden.
@@ -23,3 +23,4 @@ Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. 
 - Öffnen und Speichern erfolgen über lokale JSON-Dateien; Speichern lädt eine formatierte JSON-Datei herunter.
 - Die UI greift für Konfigurationslebenszyklus, Schemaauflösung und Export über `StudioServices` auf getrennte Serviceverträge zu. Im lokalen Browsermodus werden dafür lokale Adapter verwendet; der Editor hängt nicht direkt von einem konkreten XTom-Server ab.
 - Der Export-Service setzt den Ungespeichert-Status erst nach Übergabe an den Browser-Download zurück.
+- Neue Konfigurationen tragen den `$schema`-Verweis des versionierten DeviceConfig-Vertrags. Ein Schema-Fallback ist nur ein lokaler Kompatibilitätsmodus und darf keinen anderen Vertrag stillschweigend ersetzen.
