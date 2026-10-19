@@ -11,6 +11,7 @@ Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. 
 - Editor-Karten, Empty State und Dialoge verwenden weiße Paper-Flächen, 12 px Radius und die XFlow-kompatible dezente Schattenhierarchie. Die responsive Navigation bleibt funktional identisch.
 - Die linke Konfigurationsnavigation verwendet eine Explorer-Baumstruktur mit Root-Knoten `DeviceConfig`, aufklappbaren Gruppenknoten und eingerückten Blattknoten. Chevron- und Ordnerzustand zeigen die Expansion an; Blattknoten wechseln den aktiven Editor-Bereich.
 - Ghost-Buttons in der dunklen AppBar verwenden transparente Flächen und helle Icons/Text; deaktivierte Undo-/Redo-Buttons bleiben sichtbar, werden aber gedimmt.
+- `DeviceId`-Felder werden als Auswahlmenüs gerendert. Die Optionen werden aus den aktuell geladenen Detektoren, Quellen, Systemgeräten, Controllern und Achsen aufgebaut; ein vorhandener, nicht katalogisierter Wert bleibt als markierte Auswahl erhalten.
 
 ### Bearbeitungsregeln
 
