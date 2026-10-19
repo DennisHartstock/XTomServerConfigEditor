@@ -30,6 +30,8 @@ Listenbereiche besitzen eine Hinzufügen-Aktion. Neue Einträge werden direkt in
 
 Die Achsenliste unter „Achsen & Kollision“ besitzt eigene Hinzufügen- und Entfernen-Aktionen. Neue Achsen werden in `AxesConfiguration.Axes` gespeichert.
 
+Der Bereich „Messungen“ zeigt globale Messungsoptionen und die Liste `Measurements`. Neue Einträge verwenden einen schema-kompatiblen Axial-CT-Creator als Ausgangspunkt und können anschließend über `$type` und `MeasurementName` angepasst werden.
+
 Die strukturierten Karten zeigen ihre unterstützten Felder vollständig. Fehlende optionale Werte werden als leere Eingaben beziehungsweise als nicht gesetzte Auswahl dargestellt.
 
 Die Startup-Karten bieten Auf- und Ab-Aktionen. Die erste beziehungsweise letzte Karte deaktiviert die jeweils nicht mögliche Richtung.

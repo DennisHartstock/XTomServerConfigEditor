@@ -2,7 +2,7 @@
 
 ## DeviceConfig Studio
 
-Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. Die Navigation bietet die Bereiche Übersicht, Host-Konfiguration, Geräte, Achsen & Kollision, Startup-Reihenfolge und Assemblies.
+Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. Die Navigation bietet die Bereiche Übersicht, Host-Konfiguration, Geräte, Achsen & Kollision, Messungen, Startup-Reihenfolge und Assemblies.
 
 ### Bearbeitungsregeln
 
@@ -26,3 +26,4 @@ Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. 
 - Der Export-Service setzt den Ungespeichert-Status erst nach Übergabe an den Browser-Download zurück.
 - Neue Konfigurationen tragen den `$schema`-Verweis des versionierten DeviceConfig-Vertrags. Ein Schema-Fallback ist nur ein lokaler Kompatibilitätsmodus und darf keinen anderen Vertrag stillschweigend ersetzen.
 - Der Export normalisiert den `$schema`-Verweis auch bei älteren geladenen Profilen auf den aktuellen versionierten Vertrag; die laufende Editing-Session wird dadurch nicht stillschweigend umgeschrieben.
+- Der Bereich „Messungen“ bearbeitet `MeasurementOptions.RingCorrectionJsonOptions.PixelShift` sowie `$type` und `MeasurementName` der Messungs-Creator. Zusätzliche Creator-Felder bleiben im Rohdaten-Dialog verfügbar.
