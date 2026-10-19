@@ -13,6 +13,7 @@ Die erste UI-Version stellt einen Browser-Editor für DeviceConfig-JSON bereit. 
 - Ghost-Buttons in der dunklen AppBar verwenden transparente Flächen und helle Icons/Text; deaktivierte Undo-/Redo-Buttons bleiben sichtbar, werden aber gedimmt.
 - Die `$type`-Felder der Komponenten werden als Auswahlmenüs gerendert. Die Detektoren, Quellen, Stage-Controller und Achsen beziehen ihre möglichen Typen aus dem geladenen Assembly-Katalog; Messungen verwenden die bekannten Measurement-Creator-Typen. `DeviceId` bleibt die frei vergebbare Instanz-ID.
 - CollisionActors werden im Bereich „Achsen & Kollision“ als anklickbare 3D-Boxen dargestellt. Die ausgewählte Box kann über ihr Eigenschaftenpanel einzeln bearbeitet werden; Änderungen werden direkt in `AxesConfiguration.AxisNodes[].CollisionActors[]` geschrieben.
+- Die 3D-Geometrie verwendet `X` für links/rechts, `Y` für hoch/runter und `Z` für vor/zurück. Bei `SampleCollisionBox` liegt `Height` auf der Y-Achse; `Radius` spannt X und Z.
 
 ### Bearbeitungsregeln
 

@@ -12,6 +12,8 @@ Die Typ-Auswahllisten werden zur Laufzeit aus dem Assembly-Katalog des geladenen
 
 Die 3D-Collisionbox-Ansicht ist eine lokale Präsentations- und Editierhilfe ohne zusätzliche Laufzeitabhängigkeit. Geometrieänderungen werden über die bestehende lokale Änderungshistorie und den normalen JSON-Export persistiert.
 
+Die Geometrieprojektion interpretiert Y als vertikale und Z als Tiefenachse; diese Zuordnung ist unabhängig von der Darstellung und wird auch beim Export der bestehenden Felder beibehalten.
+
 Die Anwendung kann über einen lokalen Webserver oder direkt als HTML-Datei gestartet werden. Im direkten Dateimodus sind schemaabhängige Detailgrenzen eingeschränkt, die bekannten Dropdown-Auswahlen und die Grundprüfung bleiben verfügbar. Der aktive Vertrag ist `procon.xtom.device-config@1.0.0` aus `Contracts/DeviceConfig/v1`.
 
 ## Export

@@ -12,6 +12,8 @@ Die `$type`-Felder der strukturierten Komponenten werden über gruppierte Auswah
 
 „Achsen & Kollision“ enthält eine 3D-Ansicht der CollisionActors. Auswahl ist sowohl über die Box als auch über die Komponentenliste möglich. Das Inspector-Panel zeigt je nach `$type` die Box-Grenzen (`MinX`/`MaxX`, `MinY`/`MaxY`, `MinZ`/`MaxZ`) beziehungsweise Radius/Höhe einer `SampleCollisionBox` sowie `ActorId`, `$type` und `IsStatic`.
 
+Die Achsenorientierung ist fest: X = links/rechts, Y = hoch/runter, Z = vor/zurück. Die Ansicht und die `SampleCollisionBox`-Abbildung folgen derselben Orientierung.
+
 Enum-Felder aus `Contracts/DeviceConfig/v1/device-config.schema.json` erscheinen in den strukturierten Bereichen als Dropdowns. Die Auswahl wird unmittelbar in die JSON-Struktur geschrieben. Die Prüfung meldet fehlende Pflichtfelder, falsche Datentypen, ungültige Enum-Werte sowie Werte außerhalb von Minimum/Maximum und MinLength/MinItems.
 
 Zusätzlich prüft die Validierung die fachlichen Querverweise zwischen Startup-Geräten, Achsen, Controllern und AxisNodes.

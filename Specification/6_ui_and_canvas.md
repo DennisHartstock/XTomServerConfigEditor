@@ -11,3 +11,5 @@ The shell follows the XFlow visual language locally: Roboto typography, a dark L
 The navigation is an Explorer-style tree rooted at `DeviceConfig`; expandable groups reveal leaf editor sections, while expansion state remains presentation-only.
 
 The Axes & Collision section includes a local CSS 3D viewport for `CollisionActors`, with selection and an inspector bound to the persisted collision actor paths.
+
+The collision viewport uses the fixed coordinate convention X left/right, Y up/down, and Z front/back; `SampleCollisionBox` maps radius to X/Z and height to Y.
